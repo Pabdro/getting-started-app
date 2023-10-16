@@ -1,0 +1,20 @@
+services:
+  todo-app:
+    image: getting_started:0.2
+    ports:
+      - 2345:3000
+    working_dir: /app
+    volumes:
+      - ./:/etc/todos
+    enviorenment:
+      - MYSQL_HOST: mysql
+      - MYSQL_USER: root
+      - MYSQL_PASSWORD: password
+      - MYSQL_DB: todo_database
+  mysql-todo-app:
+    image: mysql:latest
+    volumes:
+      - mysql:/var/lib/mysql
+  enviorenment:
+      - MYSQL_ROOT_PASSWORD: password
+      - MYSQL_DATABSE: todo_database
