@@ -3,8 +3,7 @@ name: Continous Integration
 on:
   push:
     branches:
-      - main
-      - test-branch
+      - master
 
 jobs:
   test:
@@ -18,7 +17,7 @@ jobs:
       run: |
         npm install
 
-    - name: Pruebas Jest
+    - name: Pruebas
       run: |
         npm run test
 
@@ -26,16 +25,16 @@ jobs:
       run: |
         echo "Corriendo pruebas Cypress..."
         echo "Pruebas correctas! Todo bien!"
-      # echo "No tienes instalado Cypress! Tonto!"
+        echo "No tienes instalado Cypress! Tonto!"
         exit 0
-
+        
   build:
     runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout git
       uses: actions/checkout@v4
-    
+      
     - name: Dependencien and Building
       run: |
         npm install
